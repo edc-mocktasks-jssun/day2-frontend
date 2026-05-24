@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,22 +19,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className={inter.className}>
-        <nav className="border-b border-gray-200 px-8 py-4 flex items-center gap-8 bg-white sticky top-0 z-50">
-          <span className="font-bold text-blue-900 text-xl mr-4">LaunchPad</span>
-          <Link href="/" className="text-gray-600 hover:text-blue-900 font-medium transition">Home</Link>
-          <Link href="/about" className="text-gray-600 hover:text-blue-900 font-medium transition">About</Link>
-          <Link href="/pricing" className="text-gray-600 hover:text-blue-900 font-medium transition">Pricing</Link>
-          <Link href="/weather" className="text-gray-600 hover:text-blue-900 font-medium transition">Weather</Link>
-          <Link href="/contact" className="text-gray-600 hover:text-blue-900 font-medium transition">Contact</Link>
-          <div className="ml-auto">
-            <Link href="/contact"
-              className="bg-blue-900 text-white px-5 py-2 rounded-full font-semibold hover:bg-blue-800 transition">
-              Get Started
-            </Link>
-          </div>
-        </nav>
+        <nav className="border-b border-gray-200 px-8 py-4 flex items-center gap-6 bg-white sticky top-0 z-50">
+  <span className="font-bold text-blue-900 text-xl mr-4">LaunchPad</span>
+  <Link href="/" className="text-gray-600 hover:text-blue-900 font-medium transition">Home</Link>
+  <Link href="/about" className="text-gray-600 hover:text-blue-900 font-medium transition">About</Link>
+  <Link href="/pricing" className="text-gray-600 hover:text-blue-900 font-medium transition">Pricing</Link>
+  <Link href="/weather" className="text-gray-600 hover:text-blue-900 font-medium transition">Weather</Link>
+  <Link href="/form" className="text-gray-600 hover:text-blue-900 font-medium transition">Form</Link>
+  <Link href="/contact" className="text-gray-600 hover:text-blue-900 font-medium transition">Contact</Link>
+  <div className="ml-auto">
+    <Link href="/contact"
+      className="bg-blue-900 text-white px-5 py-2 rounded-full font-semibold hover:bg-blue-800 transition">
+      Get Started
+    </Link>
+  </div>
+</nav>
         <main>{children}</main>
 
         {/* FOOTER */}
